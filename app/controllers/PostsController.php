@@ -17,7 +17,9 @@ class PostsController extends BaseController {
 
 	public function showIndex()
 	{
-		return View::make('posts');
+		$posts = Post::all();
+		
+		return View::make('posts', array('posts' => $posts));
 	}
 
 }
