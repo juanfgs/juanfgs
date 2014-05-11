@@ -17,10 +17,12 @@ Route::get('admin', array( 'uses' => 'DashboardController@showIndex'));
 Route::get('admin/posts/add', 'DashboardController@addPost');
 Route::post('admin/posts/add', 'DashboardController@addPost');
 Route::get('admin/posts/edit/{id}', 'DashboardController@editPost');
+Route::get('post/{id}', 'PostsController@showPost');
 
 Route::get('login', 'UsersController@login'); 
 Route::get('register', 'UsersController@register'); 
 
+Route::post('comment/save', 'CommentsController@saveComment');
 Route::post('login/process', 'UsersController@processLogin');
 Route::post('register/process', 'UsersController@processRegister');
 
