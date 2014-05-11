@@ -5,7 +5,7 @@
 <ul class="posts list">
 	@foreach ($posts as $post)
 		<li class="entry">
-			<h2>{{ $post->title }}</h2>
+			<h2><a href="/post/{{ $post->id }}">{{ $post->title }}</a></h2>
 			<p>{{ $post->content }}</p>
 		
 		</li>

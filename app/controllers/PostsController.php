@@ -21,5 +21,16 @@ class PostsController extends BaseController {
 		
 		return View::make('posts', array('posts' => $posts));
 	}
+	
+	public function showPost($id = null){
+		if(isset($id)){
+			$post = Post::find($id);
+			$comments = Post::find($id)->comments;
+			
+			return View::make('post', array('post' => $post, 'comments' => $comments));
+		} else {
+			return Redirect::to('/404');
+		}
+	}
 
 }
