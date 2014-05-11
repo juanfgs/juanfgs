@@ -17,7 +17,7 @@ class PostsController extends BaseController {
 
 	public function showIndex()
 	{
-		$posts = Post::all();
+		$posts = Post::where('published', '=', true)->get();
 		
 		return View::make('posts', array('posts' => $posts));
 	}
