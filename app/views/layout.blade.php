@@ -6,7 +6,7 @@
 {{ HTML::style('bootstrap/css/bootstrap.min.css'); }}
 {{ HTML::style('bootstrap/css/bootstrap-theme.min.css'); }}
 {{ HTML::script('//code.jquery.com/jquery-1.11.0.min.js'); }}
-
+@yield('includes')
 </head>
 
 <body>
@@ -21,9 +21,13 @@
 			<!--Renders the Page content -->
 			@yield('content')
 		</div>
-	
+		
+
 	</div>
-	
+		<footer>
+			@yield('footer')
+		</footer>
+		
 	{{ HTML::script('bootstrap/js/bootstrap.min.js'); }}
 
 	

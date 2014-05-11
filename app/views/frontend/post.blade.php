@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('frontend')
 @section('title', $post->title)
-@section('content')
+@section('frontend.content')
 
 <div class="post .col-md-6">
 	

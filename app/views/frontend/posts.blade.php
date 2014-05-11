@@ -1,6 +1,6 @@
-@extends('layout')
-
-@section('content')
+@extends('frontend')
+@section('title', 'Blog')
+@section('frontend.content')
 <h1>Latest Posts</h1>
 <ul class="posts list">
 	@foreach ($posts as $post)
