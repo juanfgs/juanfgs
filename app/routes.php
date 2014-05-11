@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'PostsController@showIndex');
-
+Route::get('/', 'HomeController@showWelcome');
+Route::get('posts', 'PostsController@showIndex');
 Route::get('admin', array( 'uses' => 'DashboardController@showIndex'));
 Route::get('admin/posts/add', 'DashboardController@addPost');
 Route::post('admin/posts/add', 'DashboardController@addPost');
