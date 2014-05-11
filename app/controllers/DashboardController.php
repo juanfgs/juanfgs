@@ -59,8 +59,8 @@ class DashboardController extends BaseController {
 	public function showIndex()
 	{
 			$posts = Post::all();
-		
-			return View::make('dashboard.index', array('posts' => $posts));
+			$comments= Comment::all();
+			return View::make('dashboard.index', array('posts' => $posts, 'comments' => $comments));
 		
 			
 	
