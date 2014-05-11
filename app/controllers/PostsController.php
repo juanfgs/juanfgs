@@ -19,7 +19,7 @@ class PostsController extends BaseController {
 	{
 		$posts = Post::where('published', '=', true)->get();
 		
-		return View::make('posts', array('posts' => $posts));
+		return View::make('frontend.posts', array('posts' => $posts));
 	}
 	
 	public function showPost($id = null){
@@ -27,7 +27,7 @@ class PostsController extends BaseController {
 			$post = Post::find($id);
 			$comments = Post::find($id)->comments;
 			
-			return View::make('post', array('post' => $post, 'comments' => $comments));
+			return View::make('frontend.post', array('post' => $post, 'comments' => $comments));
 		} else {
 			return Redirect::to('/404');
 		}
