@@ -17,11 +17,17 @@ class DashboardController extends BaseController {
 
 
 	public function addPost(){
+		$categories = Category::all();
 		if(Input::has('title') && Input::has('content')){
 			$post = new Post;
 			
+			
+			
 			$post->title = Input::get('title');
 			$post->content = Input::get('content');
+			
+			$post->category_id = Input::get('categoryId');
+			
 			if(Input::has('published')){
 				$post->published = Input::get('published');
 			}
@@ -30,20 +36,38 @@ class DashboardController extends BaseController {
 			return Redirect::to('admin');
 		}
 		
-		return View::make('dashboard.addpost');
+		return View::make('dashboard.addpost', array('categories' => $categories));
 	}
+
+	public function addCategory(){
+		if(Input::has('name') ){
+			$category = new Category;
+			
+			$category->name= Input::get('name');
+			
+
+			$category->save();
+			
+			return Redirect::to('admin');
+		}
+		
+		return View::make('dashboard.addcategory');
+	}
+	
 	
 	public function editPost($id = null){
 		if(isset($id)){
+			$categories = Category::all();
 			$post = Post::find($id);
 			
 			
 		
 			if(Input::has('title') && Input::has('content')){
-				$post = new Post;
+				
 			
 				$post->title = Input::get('title');
 				$post->content = Input::get('content');
+				$post->category_id = Input::get('categoryId');
 				if(Input::has('published')){
 					$post->published = Input::get('published');
 				}
@@ -52,8 +76,9 @@ class DashboardController extends BaseController {
 			
 				return Redirect::to('admin');
 			}
-			return View::make('dashboard.editpost', array('post' => $post));
+			return View::make('dashboard.editpost', array('post' => $post, 'categories' => $categories));
 		}
+		return Redirect::intended();
 	}
 	
 	public function showIndex()
