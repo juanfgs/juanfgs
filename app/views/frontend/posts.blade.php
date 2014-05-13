@@ -1,7 +1,8 @@
 @extends('frontend')
 @section('title', 'Blog')
 @section('frontend.content')
-<h1>Latest Posts</h1>
+<div class="col-md-9">
+
 <ul class="posts list">
 	@foreach ($posts as $post)
 		<li class="entry">
@@ -11,5 +12,15 @@
 		</li>
 	@endforeach
 </ul>
+</div>
+@stop
 
+@section('frontend.sidebar')
+<div class="col-md-3">
+	<div class="list-group">
+		@foreach ($categories as $category)
+		  <a href="/posts/category/{{ $category->id }}" class="list-group-item">{{ $category->name}} <span class="badge">{{ $category->posts()->count() }}</span> </a>
+		@endforeach 
+	</div>
+</div>
 @stop

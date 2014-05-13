@@ -2,24 +2,22 @@
 
 class PostsController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/posts', 'PostsController@showIndex');
-	|
-	*/
 
-	public function showIndex()
+
+	public function showIndex($id = null )
 	{
-		$posts = Post::where('published', '=', true)->get();
+		if(isset($id)){
+			$posts = Category::find($id)->posts()->take(10)->get();
+			
+			
+		} else {
+			$posts = Post::where('published', '=', true)->take(10)->get();
+		}
 		
-		return View::make('frontend.posts', array('posts' => $posts));
+		
+		$categories = Category::all();
+	
+		return View::make('frontend.posts', array('posts' => $posts, 'categories' => $categories));
 	}
 	
 	public function showPost($id = null){

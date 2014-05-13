@@ -2,7 +2,7 @@
 @section('title', $post->title)
 @section('frontend.content')
 
-<div class="post .col-md-6">
+<div class="post col-md-12">
 	
 	<h1>{{ $post->title }}</h1>
 	<p>{{ $post->content }}</p>
@@ -11,8 +11,9 @@
 	
 </div>
 
+<div class="post col-md-12">
 <h2>Comments for {{ $post->title }}</h2>
-<ul class="comment list col-md-12">
+<ul class="comment list">
 	@foreach ($comments as $comment)
 		<li class="comment">
 			<h3>{{ $comment->name}} writes...</h3>
@@ -51,6 +52,7 @@
 	</div>
 
 {{ Form::close() }}
+</div>
 </div>
 @stop
 
