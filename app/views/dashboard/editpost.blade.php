@@ -21,7 +21,18 @@
 			<input type="checkbox" name="published" value="1" {{ $post->published ? 'checked="checked"' : '' }} /><label>Published</label>
 		</div>		
 		
-		 
+		
+		<div class="input-group">
+			<select class="form-control" name="categoryId">
+				<option value="">Select Category</option>
+				@foreach($categories as $category)
+					<option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
+				@endforeach
+			</select>
+		</div>
+		
+	
+	
 		<button class="btn">Post</button>
 	{{ Form::close() }}
 @stop

@@ -18,8 +18,17 @@
 		
 		</div>
 		<div class="input-group">
-			<input type="checkbox" name="published" value="1" /><label>Published</label>
+			<input class="form-control" type="checkbox" name="published" value="1" /><label>Published</label>
 		</div>		
+		
+		<div class="input-group">
+			<select class="form-control" name="categoryId">
+				<option value="">Select Category</option>
+				@foreach($categories as $category)
+					<option value="{{ $category->id }}" >{{ $category->name }}</option>
+				@endforeach
+			</select>
+		</div>
 		
 		 
 		<button class="btn">Post</button>
