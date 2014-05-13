@@ -18,8 +18,11 @@ class HomeController extends BaseController {
 	public function showWelcome()
 	{
 		
+		$featured = Post::with('category')->whereHas('category', function($q){
+			$q->where('name', '=', 'featured');
+		})->take(3)->get();
 	
-		return View::make('frontend.home');
+		return View::make('frontend.home', array('featured_posts' => $featured));
 	}
 
 }

@@ -39,19 +39,18 @@
 @stop
 
 @section('frontend.content')
+
 <div class="row">
-	<div class="col-sm-6 col-md-4">
-		<div class="thumbnail">
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-4">
-		<div class="thumbnail">
-		</div>
-	</div>
+	@if(!empty($featured_posts))
+		@foreach ($featured_posts as $featured)
 		<div class="col-sm-6 col-md-4">
-		<div class="thumbnail">
+			<div class="thumbnail">
+			<h3>{{ $featured->title }}</h3>
+			</div>
 		</div>
-	</div>
+		@endforeach
+	@endif
+
 </div>
 
 @stop
