@@ -13,10 +13,18 @@
 
 Route::get('/', 'HomeController@showWelcome');
 Route::get('posts', 'PostsController@showIndex');
-Route::get('admin', array( 'uses' => 'DashboardController@showIndex'));
+Route::get('posts/category/{id}', 'PostsController@showIndex');
+Route::get('admin', array( 'uses' => 'DashboardController@showIndex', 'before' => 'auth'));
+
+
 Route::get('admin/posts/add', 'DashboardController@addPost');
 Route::post('admin/posts/add', 'DashboardController@addPost');
+
+Route::get('admin/categories/add', 'DashboardController@addCategory');
+Route::post('admin/categories/add', 'DashboardController@addCategory');
+
 Route::get('admin/posts/edit/{id}', 'DashboardController@editPost');
+Route::post('admin/posts/edit/{id}', 'DashboardController@editPost');
 Route::get('post/{id}', 'PostsController@showPost');
 
 Route::get('login', 'UsersController@login'); 
