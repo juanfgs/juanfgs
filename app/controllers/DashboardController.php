@@ -28,6 +28,16 @@ class DashboardController extends BaseController {
 			
 			$post->category_id = Input::get('categoryId');
 			
+			if(Input::hasFile('photo')){
+						if(Input::file('photo')->isValid()){
+							$newFileName = time().'_'.Input::file('photo')->getClientOriginalName();
+							$path =  '/img/upload/';
+							Input::file('photo')->move( public_path(). $path, $newFileName);
+						
+							$post->photo = $newFileName;
+						}
+			}
+			
 			if(Input::has('published')){
 				$post->published = Input::get('published');
 			}
@@ -72,6 +82,17 @@ class DashboardController extends BaseController {
 					$post->published = Input::get('published');
 				}
 				
+				if(Input::hasFile('photo')){
+					if(Input::file('photo')->isValid()){
+						$newFileName = time().'_'.Input::file('photo')->getClientOriginalName();
+						$path =  '/img/upload/';
+						Input::file('photo')->move(public_path() .$path, $newFileName);
+						
+						$post->photo = $newFileName;
+						
+						}
+				} 
+				
 				$post->save();
 			
 				return Redirect::to('admin');
@@ -83,8 +104,8 @@ class DashboardController extends BaseController {
 	
 	public function showIndex()
 	{
-			$posts = Post::all();
-			$comments= Comment::all();
+			$posts = Post::orderBy('created_at', 'DESC')->get()->take(5);
+			$comments= Comment::all()->take(5);
 			return View::make('dashboard.index', array('posts' => $posts, 'comments' => $comments));
 		
 			
