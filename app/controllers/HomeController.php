@@ -17,12 +17,20 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		
+
+		$slides = Post::with('category')->whereHas('category', function($q){
+			$q->where('name', '=', 'slideshow');
+			$q->orderBy('created_at', 'DESC');
+		})->take(3)->get();
+		$slides[0]->active = true;
 		$featured = Post::with('category')->whereHas('category', function($q){
 			$q->where('name', '=', 'featured');
+			$q->orderBy('created_at', 'DESC');
 		})->take(3)->get();
-	
-		return View::make('frontend.home', array('featured_posts' => $featured));
+
+		$latest = Post::orderBy('created_at', 'DESC')->take(5)->get();
+
+		return View::make('frontend.home', array('featured_posts' => $featured, 'latest' => $latest, 'slides' => $slides));
 	}
 
 }
