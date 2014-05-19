@@ -1,11 +1,16 @@
 @extends('layout')
 @section('title', 'Admin Dashboard')
+@section('includes')
+	 {{ HTML::style('css/backend.style.css'); }}
+	 {{ HTML::script('packages/tinymce/js/tinymce/tinymce.min.js') }}
+@stop
 
 
 @section('header')
 
 
-	<nav  class="navbar navbar-default"  role="navigation">
+	<nav  class="navbar navbar-inverse navbar-fixed-top"  role="navigation">
+	<div class="container">
 		<ul class="nav navbar-nav">
 			<li><a href="/admin">Dashboard</a></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"  data-toggle="dropdown">Posts  <b class="caret"></b></a>
@@ -22,7 +27,7 @@
 			</li>
 		<li><a href="/">View Site <span class="glyphicon glyphicon-arrow-right"></span></a></li>
 		</ul>
-
+	</div>
 	</nav>
 @stop
 
@@ -30,10 +35,9 @@
 	@yield('dashboard.content')
 	{{ HTML::script('bootstrap/bootstrap-wysiwyg.js'); }}
 	<script type="text/javascript">
-		$(document).ready(function(){
-			
-			
-		});
-	 </script>
-	
+tinymce.init({
+    selector: "textarea"
+ });
+</script>
+
 @stop

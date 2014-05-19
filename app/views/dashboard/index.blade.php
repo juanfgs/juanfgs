@@ -4,7 +4,7 @@
 
 @section('dashboard.content')
 	<div class="col-md-6">
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Posts</h3>
 			</div>
@@ -23,7 +23,7 @@
 		
 	</div> <!-- end column -->
 	<div class="col-md-6">
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Latest Commenters</h3>
 			</div>
