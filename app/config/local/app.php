@@ -14,5 +14,5 @@ return array(
 	*/
 
 	'debug' => true,
-
+	'upload_path' => '/img/upload/',
 );
