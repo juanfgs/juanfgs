@@ -8,10 +8,12 @@
 		<li class="entry">
 			<h2><a href="/post/{{ $post->id }}">{{ $post->title }}</a></h2>
 			<p>{{ $post->content }}</p>
-		
+
 		</li>
 	@endforeach
 </ul>
+
+	{{ $posts->links() }}
 </div>
 @stop
 
@@ -20,7 +22,7 @@
 	<div class="list-group">
 		@foreach ($categories as $category)
 		  <a href="/posts/category/{{ $category->id }}" class="list-group-item">{{ $category->name}} <span class="badge">{{ $category->posts()->count() }}</span> </a>
-		@endforeach 
+		@endforeach
 	</div>
 </div>
 @stop

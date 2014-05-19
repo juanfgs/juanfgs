@@ -4,33 +4,35 @@
 <title>@yield('title')</title>
 
 {{ HTML::style('bootstrap/css/bootstrap.min.css'); }}
-{{ HTML::style('bootstrap/css/bootstrap-theme.min.css'); }}
+
 {{ HTML::script('//code.jquery.com/jquery-1.11.0.min.js'); }}
 @yield('includes')
 </head>
 
 <body>
-	<div class="container">
-	
-	
-		<header class="row" >
+
+
+
+		<header  >
 			<!--Renders the Page header define in template as (at)section('header') -->
 			@yield('header')
 		</header>
+
+	<div class="container">
 		<div class="row">
 			<!--Renders the Page content -->
 			@yield('content')
 		</div>
-		
+		<div class="clearer"></div>
 
 	</div>
-		<footer>
+		<div id="footer">
 			@yield('footer')
-		</footer>
-		
+		</div>
+
 	{{ HTML::script('bootstrap/js/bootstrap.min.js'); }}
 
-	
+
 </body>
 
 </html>
