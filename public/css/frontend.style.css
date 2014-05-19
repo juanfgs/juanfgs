@@ -1,8 +1,26 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body { padding-top: 70px;
+  margin-bottom: 70px;
+}
  header {
 	 margin-top:10px;
-	 
+
 }
+
+.clearer {clear:both;}
  .carousel {
 	 margin-bottom:30px;
-	 
+
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+
 }
