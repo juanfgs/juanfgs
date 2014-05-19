@@ -34,6 +34,8 @@ Route::post('comment/save', 'CommentsController@saveComment');
 Route::post('login/process', 'UsersController@processLogin');
 Route::post('register/process', 'UsersController@processRegister');
 
+Route::get('/img/upload/{width}x{height}/{image}', 'ThumbnailController@generate');
+
 Route::get('/404', function(){
 	View::make('notfound');
 });
